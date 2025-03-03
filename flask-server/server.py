@@ -31,7 +31,7 @@ def home():
         </div>
         <div class="section">
             <!-- Display the image here -->
-            <img src="/static/my_image.jpg" alt="A descriptive alt text">
+            <img src="/static/images.jpg" alt="Hi cat">
         </div>
         <div class="section">
             <p><a href="/feedback">Leave Feedback</a></p>
