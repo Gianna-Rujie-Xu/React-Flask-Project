@@ -16,6 +16,7 @@ def home():
             p { color: #555; }
             .section { margin-bottom: 20px; }
             a { text-decoration: none; color: blue; }
+            img { max-width: 100%; height: auto; margin-top: 20px; }
         </style>
     </head>
     <body>
@@ -29,12 +30,17 @@ def home():
             <p>This is a Flask-React project built by Rujie, who self-learned Flask, React, and Heroku deployment through YouTube tutorial videos.</p>
         </div>
         <div class="section">
+            <!-- Display the image here -->
+            <img src="/static/my_image.jpg" alt="A descriptive alt text">
+        </div>
+        <div class="section">
             <p><a href="/feedback">Leave Feedback</a></p>
         </div>
     </body>
     </html>
     """
     return html_content
+
 
 @app.route("/feedback", methods=["GET", "POST"])
 def feedback():
