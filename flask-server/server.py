@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -15,6 +15,7 @@ def home():
             h1 { color: #333; }
             p { color: #555; }
             .section { margin-bottom: 20px; }
+            a { text-decoration: none; color: blue; }
         </style>
     </head>
     <body>
@@ -27,11 +28,30 @@ def home():
         <div class="section">
             <p>This is a Flask-React project built by Rujie, who self-learned Flask, React, and Heroku deployment through YouTube tutorial videos.</p>
         </div>
+        <div class="section">
+            <p><a href="/feedback">Leave Feedback</a></p>
+        </div>
     </body>
     </html>
     """
     return html_content
 
+@app.route("/feedback", methods=["GET", "POST"])
+def feedback():
+    if request.method == "POST":
+        feedback_text = request.form.get("feedback")
+        print("Feedback received:", feedback_text)
+        return """
+        <h2>Thank you for your feedback!</h2>
+        <p><a href="/">Return Home</a></p>
+        """
+    return """
+    <h2>Leave Your Feedback</h2>
+    <form method="post" action="/feedback">
+        <textarea name="feedback" rows="4" placeholder="Enter your feedback here..."></textarea><br>
+        <input type="submit" value="Submit Feedback">
+    </form>
+    """
+
 if __name__ == "__main__":
     app.run(debug=True)
-
